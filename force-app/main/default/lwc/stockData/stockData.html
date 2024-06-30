@@ -1,0 +1,41 @@
+<template>
+  <lightning-card title="Fetch Stock data">
+    <form>
+      <div class="slds-align_absolute-center slds-p-around_small">
+        <lightning-input
+          type="text"
+          label="Enter stock name"
+          required="true"
+          onchange={handleInputChange}
+          placeholder="Enter stock name"
+        ></lightning-input>
+      </div>
+
+      <div
+        class="slds-align_absolute-center slds-p-around_small slds-p-left_large"
+      >
+        <lightning-button
+          variant="Brand"
+          label="Get Stock Details"
+          onclick={handleStockInfo}
+        ></lightning-button>
+        <lightning-button
+          class="slds-p-around_small"
+          label="Reset"
+          onclick={handleReset}
+        ></lightning-button>
+      </div>
+
+      <template lwc:if={display}>
+        <lightning-datatable
+          key-field="id"
+          data={stockDisplay}
+          columns={columns}
+          show-row-number-column
+          hide-checkbox-column
+        >
+        </lightning-datatable>
+      </template>
+    </form>
+  </lightning-card>
+</template>
